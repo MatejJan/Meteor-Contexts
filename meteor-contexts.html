@@ -1,0 +1,96 @@
+<head>
+  <title>Meteor Contexts</title>
+</head>
+
+<body>
+  <h1>Meteor Contexts</h1>
+  <p>This is a test of referencing data contexts and template instances
+    from various nested contexts inside a template.</p>
+  {{> parentTemplate parentContext}}
+</body>
+
+<template name="parentTemplate">
+  {{> childTemplate enclosingTemplateContext}}
+</template>
+
+<template name="childTemplate">
+  <h2>Enclosing template context</h2>
+  <h3>Template helpers</h3>
+  <ul>
+    <li><em>@</em>: {{name}}</li>
+    <li><em>Template.instance().data</em>: {{instanceData}}</li>
+    <li><em>Template.currentData()</em>: {{currentData}}</li>
+    <li><em>Template.parentData(0)</em>: {{parentData0}}</li>
+    <li><em>Template.parentData()</em>: {{parentData1}}</li>
+    <li><em>Template.parentData(2)</em>: {{parentData2}}</li>
+    <li><em>Template.instance()</em>: {{instance}}</li>
+    <li><em>Template.instance().view.parentView.parentView.templateInstance()</em>: {{parentInstance}}</li>
+  </ul>
+  <h3>Event handlers</h3>
+  <ul>
+    <li class="this"><em>@</em>: <span></span></li>
+    <li class="template-data"><em>template.data</em>: <span></span></li>
+    <li class="instance-data"><em>Template.instance().data</em>: <span></span></li>
+    <li class="current-data"><em>Template.currentData()</em>: <span></span></li>
+    <li class="parent-data-0"><em>Template.parentData(0)</em>: <span></span></li>
+    <li class="parent-data-1"><em>Template.parentData()</em>: <span></span></li>
+    <li class="parent-data-2"><em>Template.parentData(2)</em>: <span></span></li>
+    <li class="template"><em>template</em>: <span></span></li>
+    <li class="instance"><em>Template.instance()</em>: <span></span></li>
+    <li class="parent-instance"><em>Template.instance().view.parentView.parentView.templateInstance()</em>: <span></span></li>
+  </ul>
+  {{#with nestedContext}}
+    <h2>Nested template context</h2>
+    <h3>Template helpers</h3>
+    <ul>
+      <li><em>@</em>: {{name}}</li>
+      <li><em>Template.instance().data</em>: {{instanceData}}</li>
+      <li><em>Template.currentData()</em>: {{currentData}}</li>
+      <li><em>Template.parentData(0)</em>: {{parentData0}}</li>
+      <li><em>Template.parentData()</em>: {{parentData1}}</li>
+      <li><em>Template.parentData(2)</em>: {{parentData2}}</li>
+      <li><em>Template.instance()</em>: {{instance}}</li>
+      <li><em>Template.instance().view.parentView.parentView.templateInstance()</em>: {{parentInstance}}</li>
+    </ul>
+    <h3>Event handlers</h3>
+    <ul>
+      <li class="this"><em>@</em>: <span></span></li>
+      <li class="template-data"><em>template.data</em>: <span></span></li>
+      <li class="instance-data"><em>Template.instance().data</em>: <span></span></li>
+      <li class="current-data"><em>Template.currentData()</em>: <span></span></li>
+      <li class="parent-data-0"><em>Template.parentData(0)</em>: <span></span></li>
+      <li class="parent-data-1"><em>Template.parentData()</em>: <span></span></li>
+      <li class="parent-data-2"><em>Template.parentData(2)</em>: <span></span></li>
+      <li class="template"><em>template</em>: <span></span></li>
+      <li class="instance"><em>Template.instance()</em>: <span></span></li>
+      <li class="parent-instance"><em>Template.instance().view.parentView.parentView.templateInstance()</em>: <span></span></li>
+    </ul>
+    {{#with doubleNestedContext}}
+      <h2>Double nested template context</h2>
+      <h3>Template helpers</h3>
+      <ul>
+        <li><em>@</em>: {{name}}</li>
+        <li><em>Template.instance().data</em>: {{instanceData}}</li>
+        <li><em>Template.currentData()</em>: {{currentData}}</li>
+        <li><em>Template.parentData(0)</em>: {{parentData0}}</li>
+        <li><em>Template.parentData()</em>: {{parentData1}}</li>
+        <li><em>Template.parentData(2)</em>: {{parentData2}}</li>
+        <li><em>Template.instance()</em>: {{instance}}</li>
+        <li><em>Template.instance().view.parentView.parentView.templateInstance()</em>: {{parentInstance}}</li>
+      </ul>
+      <h3>Event handlers</h3>
+      <ul>
+        <li class="this"><em>@</em>: <span></span></li>
+        <li class="template-data"><em>template.data</em>: <span></span></li>
+        <li class="instance-data"><em>Template.instance().data</em>: <span></span></li>
+        <li class="current-data"><em>Template.currentData()</em>: <span></span></li>
+        <li class="parent-data-0"><em>Template.parentData(0)</em>: <span></span></li>
+        <li class="parent-data-1"><em>Template.parentData()</em>: <span></span></li>
+        <li class="parent-data-2"><em>Template.parentData(2)</em>: <span></span></li>
+        <li class="template"><em>template</em>: <span></span></li>
+        <li class="instance"><em>Template.instance()</em>: <span></span></li>
+        <li class="parent-instance"><em>Template.instance().view.parentView.parentView.templateInstance()</em>: <span></span></li>
+      </ul>
+    {{/with}}
+  {{/with}}
+</template>
